@@ -1,0 +1,51 @@
+<h1>Welcome to IronMatch</h1>
+
+<table class="table">
+  <tr>
+    <th>Player 1</th>
+    <th>Score 1</th>
+    <th>Score 2</th>
+    <th>Player 2</th>
+    <th>Action</th>
+  </tr>
+  {{#each matches}}
+  <tr>
+    <td>
+      {{player1}}
+    </td>
+    <td>
+      {{score1}}
+    </td>
+    <td>
+      {{score2}}
+    </td>
+    <td>
+      {{player2}}
+    </td>
+    <td>
+      <a href="/{{_id}}" class="btn btn-outline-danger">DELETE</a>
+      {{!-- <button class="btn btn-outline-danger" type="submit">Delete</button> --}}
+    </td>
+  </tr>
+  {{/each}}
+
+  <form action="/" method="post">
+    <tr>
+      <td>
+        <input class="form-control" type="text" name="player1" id="">
+      </td>
+      <td>
+        <input class="form-control" type="number" name="score1" id="">
+      </td>
+      <td>
+        <input class="form-control" type="number" name="score2" id="">
+      </td>
+      <td>
+        <input class="form-control" type="text" name="player2" id="">
+      </td>
+      <td>
+        <button class="btn btn-outline-primary" type="submit">Add</button>
+      </td>
+    </tr>
+  </form>
+</table>
