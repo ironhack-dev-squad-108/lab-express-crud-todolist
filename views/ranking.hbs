@@ -1,0 +1,20 @@
+{{#if playersScores}}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Player</th>
+      <th scope="col">Score</th>
+      <th scope="col">Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each playersScores}}
+    <tr>
+      <td>{{this.player}}</td>
+      <td>{{this.score}}</td>
+      <td>{{this.result}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{/if}}
