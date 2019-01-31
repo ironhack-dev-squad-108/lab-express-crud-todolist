@@ -1,0 +1,55 @@
+<div class="container">
+    <h1 class="row">Welcome to Ironmatch</h1>
+    <form action="/match/add" method="POST" id="new_match"></form>
+    
+    <form action="/" method="GET" id="search">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Player's name" name="player" form="search">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit" form="search">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Player 1</th>
+                <th scope="col">Score 1</th>
+                <th scope="col">Score 2</th>
+                <th scope="col">Player 2</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each matches}}
+            <tr>
+                <td>{{player1}}</td>
+                <td>{{score1}}</td>
+                <td>{{score2}}</td>
+                <td>{{player2}}</td>
+                <td>
+                    <a href="/match/delete/{{this._id}}" class="btn btn-outline-danger" />Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+            <tr>
+                <td>
+                    <input type="text" name="player1" form="new_match" class="form-control" />
+                </td>
+                <td>
+                    <input type="number" name="score1" form="new_match" class="form-control" />
+                </td>
+                <td>
+                    <input type="number" name="score2" form="new_match" class="form-control" />
+                </td>
+                <td>
+                    <input type="text" name="player2" form="new_match" class="form-control" />
+                </td>
+                <td>
+                    <button type="submit" form="new_match" class="btn btn-outline-primary" />Add</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
