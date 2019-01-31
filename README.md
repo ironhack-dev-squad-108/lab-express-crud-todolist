@@ -75,7 +75,7 @@ Each document of the collection `matches` must contain the following fields:
 
 On the home page, add a POST form, with the right Bootstrap classes, to let users adding a match. 
 
-# Iteration 4 | Display all matches on the Home Page
+# Iteration 4 | Display all matches on the Home Page
 
 Display all the match on the home page in a Bootstrap table.
 
