@@ -1,0 +1,65 @@
+<h1>Welcome to Ironmatch</h1>
+
+<form action="/addmatch" method="post">
+  <div class="form-group">
+    <label for="sport">Sport</label>
+    <input type="text" name="sport" class="form-control" id="sport" aria-describedby="sportToolTip" placeholder="Enter sport">
+    <small id="sportToolTip" class="form-text text-muted">Please add your favorite sport!</small>
+  </div>
+  <div class="form-group">
+    <label for="player1">Player 1</label>
+    <input type="text" name="player1" class="form-control" id="player1" aria-describedby="player1ToolTip" placeholder="Enter player 1 name">
+    <small id="player1ToolTip" class="form-text text-muted">Please add your favorite sport!</small>
+  </div>
+  <div class="form-group">
+    <label for="player2">Player 2</label>
+    <input type="text" name="player2" class="form-control" id="player2" aria-describedby="player2ToolTip" placeholder="Enter player 2 name">
+    <small id="player2ToolTip" class="form-text text-muted">Please add your favorite sport!</small>
+  </div>
+  <div class="form-group">
+    <label for="score1">Score 1</label>
+    <input type="text" name="score1" class="form-control" id="score1" aria-describedby="score1ToolTip" placeholder="Enter score for player 1">
+    <small id="score1ToolTip" class="form-text text-muted">Please add your favorite sport!</small>
+  </div>
+  <div class="form-group">
+    <label for="score2">Score 2</label>
+    <input type="text" name="score2" class="form-control" id="score2" aria-describedby="score2ToolTip" placeholder="Enter score player 2">
+    <small id="score2ToolTip" class="form-text text-muted">Please add your favorite sport!</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+<br>
+{{#if matches}}
+<!-- Search form -->
+<form action="/" method="get">
+  <input name="search" class="form-control" type="text" placeholder="Search players by player name" aria-label="Search">
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Sport</th>
+      <th scope="col">Player 1</th>
+      <th scope="col">Score</th>
+      <th scope="col">Player 2</th>
+      <th scope="col">Score</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each matches}}
+    <tr>
+      <td>{{this.sport}}</td>
+      <td>{{this.player1}}</td>
+      <td>{{this.score1}}</td>
+      <td>{{this.player2}}</td>
+      <td>{{this.score2}}</td>
+      <td><a href="/delete/{{this._id}}" class="btn btn-warning">Delete</a></td>
+      </form>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{/if}}
