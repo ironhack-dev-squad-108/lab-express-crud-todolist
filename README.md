@@ -75,9 +75,17 @@ Each document of the collection `matches` must contain the following fields:
 
 On the home page, add a POST form, with the right Bootstrap classes, to let users adding a match. 
 
+When it's done, check with MongoDB Compass if the database is updated. 
+
+![image](https://user-images.githubusercontent.com/5306791/52070048-5397a700-2580-11e9-8e03-417d8701e095.png)
+
+
 # Iteration 4 | Display all matches on the Home Page
 
-Display all the match on the home page in a Bootstrap table.
+Display all the matches on the home page in a Bootstrap table.
+
+![image](https://user-images.githubusercontent.com/5306791/52070633-90b06900-2581-11e9-8edf-82091a30c1a1.png)
+
 
 # Iteration 5 | Create a search on the home page to filter the match
 
