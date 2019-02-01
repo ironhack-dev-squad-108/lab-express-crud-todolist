@@ -1,11 +1,23 @@
+<main class="container">
 
 
-
-<main class="container"></main>
+</main>
 <h1>Welcome to Ironmatch</h1>
+
+
+<form action="/" method="GET" class="form-inline">
+  
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="searchplayer" >Search for a player:</label>
+    <input type="text" class="form-control"  placeholder="Player" name="searchplayer">
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Search</button>
+</form>
+
 <form action="/add-match" method="POST">
   <table class="table">
-    <body>
+
+    
       <tr>
         <th>Player 1</th>
         <th>Score 1</th>
@@ -19,18 +31,30 @@
         <th>{{score1}}</th>
         <th>{{score2}}</th>
         <th>{{player2}}</th>
-        <th><a href="/delete/{{_id}}">DELETE</a></th>
+        <th>
+          <a href="/delete/{{_id}}">DELETE</a>
+        </th>
       </tr>
       {{/each}}
-     
+
       <tr>
-        <td><input class="form-control" type="text" name="player1"></td>
-        <td><input class="form-control" type="number" name="score1"></td>
-        <td><input class="form-control" type="number" name="score2"></td>
-        <td><input class="form-control" type="text" name="player2"></td>
-        <td><button class="btn btn-primary" type="submit">ADD</button></td> 
+        <td>
+          <input class="form-control" type="text" name="player1">
+        </td>
+        <td>
+          <input class="form-control" type="number" name="score1">
+        </td>
+        <td>
+          <input class="form-control" type="number" name="score2">
+        </td>
+        <td>
+          <input class="form-control" type="text" name="player2">
+        </td>
+        <td>
+          <button class="btn btn-primary" type="submit">ADD</button>
+        </td>
       </tr>
-    </body>
+  
   </table>
 </form>
 </main>

@@ -5,21 +5,35 @@ const Match = require("../models/Match.js");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  Match.find()
+  if(req.query.searchplayer){
+    Match.find({$or:[{player1:req.query.searchplayer},{player2:req.query.searchplayer}]})
     .then(matches => {
       res.render("index", {
         matches
       });
-      console.log(matches);
+    
     })
     .catch(error => {
       console.log(error);
     });
+  } else{
+    Match.find()
+    .then(matches => {
+      res.render("index", {
+        matches
+      });
+    
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+  
 });
 
 router.post("/add-match", (req, res, next) => {
   const { sport, player1, player2, score1, score2 } = req.body;
-  console.log(req.body);
+  
 
   const newMatch = new Match({
     sport,
