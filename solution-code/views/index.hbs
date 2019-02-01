@@ -1,0 +1,48 @@
+<h1>Welcome to Ironmatch</h1>
+
+<form action="/" method="get" class="my-5">
+  
+  <div class="row align-items-center">
+    <div class="col-sm-9 my-1">
+      <input type="text" class="form-control" placeholder="Search for a player name" name="player" value="{{playerSearched}}">
+    </div>
+    <div class="col-sm-3 my-1">
+      <button type="submit" class="btn btn-outline-primary btn-block">Search</button>
+    </div>
+  </div>
+</form>
+
+<form action="/" method="POST">
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th>Sport</th>
+        <th>Player 1</th>
+        <th>Score 1</th>
+        <th>Score 2</th>
+        <th>Player 2</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each matches}}
+        <tr>
+          <td>{{this.sport}}</td>
+          <td>{{this.player1}}</td>
+          <td>{{this.score1}}</td>
+          <td>{{this.score2}}</td>
+          <td>{{this.player2}}</td>
+          <td><a class="btn btn-outline-danger" href="/matches/{{this._id}}/delete">Delete</a></td>
+        </tr>
+      {{/each}}
+      <tr>
+        <td><input type="text" name="sport" class="form-control"></td>
+        <td><input type="text" name="player1" class="form-control"></td>
+        <td><input type="number" name="score1" class="form-control"></td>
+        <td><input type="number" name="score2" class="form-control"></td>
+        <td><input type="text" name="player2" class="form-control"></td>
+        <td><button type="submit" class="btn btn-outline-primary">Add</button></td>
+      </tr>
+    </tbody>
+  </table>
+</form>

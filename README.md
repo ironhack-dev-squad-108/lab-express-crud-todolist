@@ -65,11 +65,11 @@ Now run your server (`npm run dev`) and try it.
 Create a file `models/Match.js`
 
 Each document of the collection `matches` must contain the following fields:
-- `sport`: The name of the sport (ex: 'football', 'basketball', 'tennis')
-- `player1`: The name of the player 1 (ex: 'Alice')
-- `player2`: The name of the player 2 (ex: 'Bob')
-- `score1`: The score of the player 1 (ex: 10)
-- `score2`: The score of the player 1 (ex: 13)
+- `sport`: The name of the sport (ex: `'football'`, `'basketball'`, `'tennis'`)
+- `player1`: The name of the player 1 (ex: `'Alice'`)
+- `player2`: The name of the player 2 (ex: `'Bob'`)
+- `score1`: The score of the player 1 (ex: `10`)
+- `score2`: The score of the player 1 (ex: `13`)
 
 # Iteration 3 | Add a match
 
@@ -99,3 +99,7 @@ To count the score, you should follow this rule:
 - Win = 2 points
 - Draw = 1 point
 - Lose = 0 point
+
+# Iteration 7 | Implement a delete button
+
+On the Home page, add a delete button on each row that delete the matchs when it's triggered.

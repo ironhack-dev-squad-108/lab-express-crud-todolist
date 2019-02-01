@@ -1,0 +1,20 @@
+<h1>Ranking</h1>
+
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th>Score</th>
+      <th>Nb of matches</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each players}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.score}}</td>
+        <td>{{this.nbOfMatches}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
