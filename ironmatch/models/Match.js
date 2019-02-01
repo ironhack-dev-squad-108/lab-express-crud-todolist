@@ -9,6 +9,7 @@ function capitalize (val) {
   }
 
 const matchSchema = new Schema({
+    sport: String,
     player1: {
         type: String,
         set: capitalize

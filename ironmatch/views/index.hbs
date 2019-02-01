@@ -1,7 +1,7 @@
 <div class="container">
     <h1 class="row">Welcome to Ironmatch</h1>
     <form action="/match/add" method="POST" id="new_match"></form>
-    
+
     <form action="/" method="GET" id="search">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Player's name" name="player" form="search">
@@ -14,6 +14,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th scope="col">Sport</th>
                 <th scope="col">Player 1</th>
                 <th scope="col">Score 1</th>
                 <th scope="col">Score 2</th>
@@ -24,6 +25,7 @@
         <tbody>
             {{#each matches}}
             <tr>
+                <td>{{sport}}</td>
                 <td>{{player1}}</td>
                 <td>{{score1}}</td>
                 <td>{{score2}}</td>
@@ -34,6 +36,9 @@
             </tr>
             {{/each}}
             <tr>
+                <td>
+                    <input type="text" name="sport" form="new_match" class="form-control" />
+                </td>
                 <td>
                     <input type="text" name="player1" form="new_match" class="form-control" />
                 </td>
