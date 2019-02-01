@@ -1,46 +1,42 @@
 const express = require('express');
-const Match = require('../models/Match')
-const router = express.Router();
+const router  = express.Router();
+const Match = require('../models/Match.js');
 
-router.get('/', (req, res, next) => {
+/* GET home page */
+router.get('/', (req,res,next) => {
   let filter = {}
-  let playerSearched = req.query.player || '' // playerSearched is always a string, that is empty if req.query.player is undefined
-  playerSearched = playerSearched.trim('')
-  if (playerSearched) {
+  if (req.query.player) {
     filter = {
-      $or: [{
-        player1: playerSearched
-      }, {
-        player2: playerSearched
-      }]
+      $or: [{ player1: req.query.player }, { player2: req.query.player }]
     }
   }
+
   Match.find(filter)
-    .then(matches => {
-      res.render('index', {
-        matches,
-        playerSearched
-      })
-    })
-    .catch(err => next(err))
+  .then((matches) => {
+    res.render('index', {results: matches})
+  })
+  .catch(error => {
+    console.log(error);
+  })
+});
+
+router.post('/', (req,res,next) => {
+  const { sport, player1, score1, score2, player2 } = req.body
+  const newMatch = new Match({ sport, player1, score1, score2, player2 })
+  newMatch.save()
+  .then((match) => {
+    res.redirect('/')
+  })
 })
 
-router.post('/', (req, res, next) => {
-  const { sport, player1, player2, score1, score2 } = req.body
-  Match.create({ sport, player1, player2, score1, score2 })
-    .then(match => {
-      res.redirect('/')
-    })
-    .catch(err => next(err))
+router.get('/delete/:id', (req,res,next) => {
+  Match.findByIdAndDelete(req.params.id)
+  .then((match) => {
+    res.redirect('/')
+  })
 })
 
-router.get('/matches/:matchId/delete', (req, res) => {
-  Match.findByIdAndDelete(req.params.matchId)
-    .then(() => res.redirect('/'))
-    .catch(err => next(err))
-})
-
-router.get('/ranking', (req, res) => {
+router.get('/ranking', (req,res) => {
   Match.find()
     .then(matches => {
       // Take all the names of the players and remove duplicates
@@ -74,5 +70,6 @@ router.get('/ranking', (req, res) => {
       res.render('ranking', { players })
     })
 })
+
 
 module.exports = router;
