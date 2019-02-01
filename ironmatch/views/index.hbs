@@ -1,16 +1,30 @@
 <div class="container">
+    <br>
     <h1 class="row">Welcome to Ironmatch</h1>
+    <br>
+    <br>
     <form action="/match/add" method="POST" id="new_match"></form>
 
-    <form action="/" method="GET" id="search">
+    <form action="/" method="GET">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Player's name" name="player" form="search">
+            <input type="text" class="form-control" placeholder="Player's name" name="player">
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit" form="search">Search</button>
+                <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" name="sport">
+                    Sports: all
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {{#each sports}}
+                    <a class="dropdown-item" href="#">{{sports}}</a>
+                    {{/each}}
+                </div>
+            </div>
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
             </div>
         </div>
     </form>
-
+    <br>
     <table class="table">
         <thead>
             <tr>

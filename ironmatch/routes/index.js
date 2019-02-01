@@ -5,14 +5,21 @@ const Match = require("../models/Match.js");
 /* GET home page */
 router.get("/", (req, res, next) => {
   let filter = {}
-  if (req.query.player) {
+  if (req.query.player && req.query.sport) {
     filter = {
-      $or: [{ player1: req.query.player }, { player2: req.query.player }]
+      $and: [
+        {$or: [{ player1: req.query.player }, { player2: req.query.player }]}, 
+        {sport: req.query.sport}]
     }
+  } else if (req.query.player) {
+    filter = { $or: [{ player1: req.query.player }, { player2: req.query.player }]}
+  } else if (req.query.sport) {
+    filter = {sport: req.query.sport}
   }
   Match.find(filter)
     .then(matches => {
-      res.render("index", {matches})
+      let sports = [...new Set(matches.map(game => game.sport))].sort()
+      res.render("index", {matches, sports})
     })
     .catch(error => {
       console.log(error);
