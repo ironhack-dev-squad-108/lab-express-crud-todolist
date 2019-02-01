@@ -1,0 +1,80 @@
+<div class="container">
+
+
+<h1>Welcome to Ironmatch</h1>
+
+<div class="active-pink-3 active-pink-4 mb-4">
+  <form action="/" method="GET">
+    <input name="search" class="searchbar" type="text" placeholder="Search Name" aria-label="Search">
+    <button class="btn btn-sm btn-warning" type="submit">Search</button>
+  </form>
+</div>
+
+
+
+<hr>
+  <div class="row">
+    <div class="col">
+      <strong>Player 1</strong>
+    </div>
+    <div class="col">
+      <strong>Score 1</strong>
+    </div>
+    <div class="col">
+      <strong>Score 2</strong>
+    </div>
+    <div class="col">
+      <strong>Player 2</strong>
+    </div>
+    <div class="col">
+      <strong>Action</strong>
+    </div>
+  </div>
+<hr>
+
+{{#each matches}}
+<table class="table">
+   <div class="row">
+    <div class="col">
+      {{player1}} 
+    </div>
+    <div class="col">
+      {{score1}} 
+    </div>
+    <div class="col">
+      {{score2}} 
+    </div>
+    <div class="col">
+      {{player2}}        
+    </div>
+    <div class="col">
+       <a href="/delete/{{this._id}}">
+      <button name="action" class="btn btn-sm btn-danger">Delete</button>
+      </a>
+    </div>
+  </div>
+</table>
+{{/each }}
+
+
+<form action="/" method="POST">
+  <div class="row">
+    <div class="col">
+      <input type="text" name="player1" class="form-control" placeholder="Player 1">
+    </div>
+    <div class="col">
+      <input type="text" name="score1" class="form-control" placeholder="Score 1">
+    </div>
+    <div class="col">
+      <input type="text" name="score2" class="form-control" placeholder="Score 2">
+    </div>
+    <div class="col">
+      <input type="text" name="player2" class="form-control" placeholder="Player 2">
+    </div>
+    <div class="col">
+      <button name="action" class="btn btn-primary">Add Match</button>       
+    </div>
+  </div>
+</form>
+
+</div>
