@@ -1,0 +1,14 @@
+<h1>Ranking</h1>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Score</th>
+  </tr>
+  {{#each ranking as |item|}}
+  <tr>
+    <td>{{item.[0]}}</td>
+    <td>{{item.[1]}}</td>
+  </tr>
+  {{/each}}
+</table>

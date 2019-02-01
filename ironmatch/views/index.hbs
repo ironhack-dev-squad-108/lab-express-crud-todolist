@@ -1,5 +1,11 @@
 <h1>Welcome to IronMatch</h1>
 
+<form class="form-inline" action="/" method="get">
+  <input class="form-control" type="text" name="search" placeholder="Search for a player" >
+  <button class="btn btn-outline-primary" type="submit">Search</button>
+  <a href="/" class="btn btn-outline-secondary">Reset</a>
+</form>
+
 <table class="table">
   <tr>
     <th>Player 1</th>
@@ -23,8 +29,7 @@
       {{player2}}
     </td>
     <td>
-      <a href="/{{_id}}" class="btn btn-outline-danger">DELETE</a>
-      {{!-- <button class="btn btn-outline-danger" type="submit">Delete</button> --}}
+      <a href="/delete/{{_id}}" class="btn btn-outline-danger">Delete</a>
     </td>
   </tr>
   {{/each}}
