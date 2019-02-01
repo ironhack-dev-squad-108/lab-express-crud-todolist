@@ -5,29 +5,23 @@ const Match = require("../models/Match.js");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
+  let filter = {}
+  
   if(req.query.searchplayer){
-    Match.find({$or:[{player1:req.query.searchplayer},{player2:req.query.searchplayer}]})
-    .then(matches => {
-      res.render("index", {
-        matches
-      });
-    
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  } else{
-    Match.find()
-    .then(matches => {
-      res.render("index", {
-        matches
-      });
-    
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    filter = {$or:[{player1:req.query.searchplayer},{player2:req.query.searchplayer}]}
+    var value = req.query.searchplayer
   }
+  Match.find(filter)
+  .then(matches => {
+    res.render("index", {
+      matches,
+      value:value
+    });
+  
+  })
+  .catch(error => {
+    console.log(error);
+  });
   
 });
 
@@ -67,10 +61,10 @@ router.get("/ranking", (req, res) => {
     .then(matches => {
       let ranking = [];
       matches.forEach(match => {
-        if (ranking.map(x => x[0]).indexOf(match.player1) === -1) {
+        if (!ranking.map(x => x[0]).includes(match.player1)) {
           ranking.push([match.player1, 0]);
         }
-        if (ranking.map(x => x[0]).indexOf(match.player2) === -1) {
+        if (!ranking.map(x => x[0]).includes(match.player2)) {
           ranking.push([match.player2, 0]);
         }
         if (match.score1 > match.score2) {
