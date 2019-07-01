@@ -1,0 +1,92 @@
+<h1 class="mb-3 text-center text-md-left">Welcome to Ironmatch</h1>
+
+<div class="border p-4 mb-5">
+  <h4 class="mb-3 text-center text-md-left">Filter by Playername</h4>
+
+  <form action="/" method="GET">
+    <div class="row">
+      <div class="form-group col-12 col-md-6">
+        <input type="text" class="form-control" name="filterByName" placeholder="Enter a playername">
+      </div>
+      <div class="col-12 col-md-4">
+        <button type="submit" class="btn-lg btn-block btn-info">Filter</button>
+      </div>
+      <div class="mt-4 mt-md-0 col-12 col-md-2">
+        <a class="btn-lg btn-block btn-info text-center text-decoration-none" href="/">reset</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<table class="table mb-5">
+  <thead>
+    <tr>
+      <th scope="col">Match ID</th>
+      <th scope="col">Discipline</th>
+      <th scope="col">Player1</th>
+      <th scope="col">Result</th>
+      <th scope="col">Player 2</th>
+      <th scope="col">Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each matches}}
+    <tr>
+      <th scope="row">{{this.id}}</th>
+      <td>{{this.sport}}</td>
+      <td>{{this.player1.name}}</td>
+      <td>{{this.result}}</td>
+      <td>{{this.player2.name}}</td>
+      <td><a href="/delete-match/{{this.id}}">🗑</a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
+{{!-- Add a new Match form --}}
+
+<div class="border p-4 mb-5">
+  <h4 class="mb-3 text-center text-md-left">Add a Match</h4>
+  <form action="/add-match" method="POST">
+
+    <div class="row">
+      <div class="form-group col-12">
+        <div class="form-group">
+          <label name="sport">Discipline</label>
+          <select class="form-control" name="sport">
+            {{#each discipline}}
+            <option value= {{this.value}} >{{this.string}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-12 col-md-6">
+        <label for="player1">Player 1</label>
+        <input type="text" class="form-control" name="player1" placeholder="Enter Player 1" required>
+      </div>
+      <div class="form-group col-12 col-md-6">
+        <label for="scorePlayer1">Score Player 1</label>
+        <input type="text" class="form-control" name="scorePlayer1" placeholder="Enter Score of Player 1" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-12 col-md-6">
+        <label for="player1">Player 2</label>
+        <input type="text" class="form-control" name="player2" placeholder="Enter Player 2" required>
+      </div>
+      <div class="form-group col-12 col-md-6">
+        <label for="scorePlayer2">Score Player 2</label>
+        <input type="text" class="form-control" name="scorePlayer2" placeholder="Enter Score of Player 2" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8 offset-2">
+        <button type="submit" class="btn-lg btn-block btn-info">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
