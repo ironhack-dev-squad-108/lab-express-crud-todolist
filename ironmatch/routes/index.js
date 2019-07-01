@@ -21,7 +21,7 @@ router.get("/", (req, res, next) => {
         { "player2.name": { $regex: new RegExp("^" + filter + "$", "i") } }
       ]
     }).then(matches => {
-      console.info(matches);
+      // console.info(matches);
       res.render("index", {
         matches: matches,
         disciplines: Disciplines
@@ -29,7 +29,7 @@ router.get("/", (req, res, next) => {
     });
   } else {
     Match.find({}).then(matches => {
-      console.log(matches);
+      // console.log(matches);
       res.render("index", {
         matches: matches,
         discipline: Disciplines
@@ -70,7 +70,7 @@ router.post("/add-match", (req, res, next) => {
         )
       }
     ).then(updatedMatch => {
-      console.log(updatedMatch);
+      // console.log(updatedMatch);
       res.redirect("/");
     });
   });
@@ -78,10 +78,12 @@ router.post("/add-match", (req, res, next) => {
 
 router.get("/ranking", (req, res, next) => {
   Match.find({}).then(matches => {
-    let ranking = sortByScore(buildRanking(
-      getPlayers(matches),
-      calculateScores(getPlayers(matches), matches)
-    ));
+    let ranking = sortByScore(
+      buildRanking(
+        getPlayers(matches),
+        calculateScores(getPlayers(matches), matches)
+      )
+    );
     res
       .render("ranking", {
         ranking: ranking
@@ -89,5 +91,28 @@ router.get("/ranking", (req, res, next) => {
       .then({});
   });
 });
+
+// Delete Matches
+
+router.get("/delete-match/:matchId", (req, res, next) => {
+  let matchId = req.params.matchId;
+  
+  Match.findById(matchId).then(match => {
+    console.log('TO DELETE:' ,match)
+    res.render("delete-match", { match: match });
+  });
+});
+
+router.post("/delete-match/:matchId", (req, res, next) => {
+  let matchId = req.params.matchId;
+  Match.findByIdAndDelete(matchId)
+      .then(match => {
+        console.log('TO DELETE:' ,match)
+        res.redirect("/");
+      })
+      .catch(err => {
+        console.log("ERR:  POST: /match-delete: ", err);
+      });
+  });
 
 module.exports = router;

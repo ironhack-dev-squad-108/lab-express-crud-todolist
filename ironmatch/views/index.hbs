@@ -27,6 +27,7 @@
       <th scope="col">Player1</th>
       <th scope="col">Result</th>
       <th scope="col">Player 2</th>
+      <th scope="col">Operations</th>
     </tr>
   </thead>
   <tbody>
@@ -37,6 +38,7 @@
       <td>{{this.player1.name}}</td>
       <td>{{this.result}}</td>
       <td>{{this.player2.name}}</td>
+      <td><a href="/delete-match/{{this.id}}">🗑</a></td>
     </tr>
     {{/each}}
   </tbody>

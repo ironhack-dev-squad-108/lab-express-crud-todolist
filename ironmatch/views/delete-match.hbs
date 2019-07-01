@@ -1,0 +1,7 @@
+<form action="/delete-match/{{match._id}}" method="POST">
+  <div>Do you really want to Delete <strong>{{match._id}}</strong>, between {{match.player1.name}} and {{match.player2.name}} </div>
+  <div class="d-flex"> 
+    <button type="submit" class="btn btn-success mt-3">Yes</button>
+    <a class=" block btn btn-danger ml-3 mt-3" href="/">No</a>
+  </div>
+</form>
