@@ -1,0 +1,6 @@
+<h1 class="text-center mb-4">All Time Highscores</h1>
+<div class="d-flex align-items-center flex-column">
+  {{#each ranking}}
+  <h3 class = "m-3">{{this.name}} - {{this.score}}</h3>
+  {{/each}}
+</div>
